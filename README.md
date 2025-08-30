@@ -22,11 +22,12 @@ A Cookiecutter template for generating a Docker Compose cluster with:
 ### 1. Install Cookiecutter
 ```bash
 pip install cookiecutter
+```
 
 ### 2. Generate a Project
 ```bash
 cookiecutter gh:YOUR_USERNAME/cookiecutter-docker-cluster
-
+```
 ### 3.Answer the Questions
 ```bash
 project_slug [my_cluster]: my_app
@@ -35,4 +36,4 @@ frontend_image [nginx:alpine]: myorg/frontend:2.0
 use_database [yes/no]: yes
 database [mongo/postgres/mysql]: postgres
 use_reverse_proxy [yes/no]: yes
-
+```
