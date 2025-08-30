@@ -1,0 +1,8 @@
+{
+  "project_slug": "my_cluster",
+  "backend_image": "nginx:latest",
+  "frontend_image": "nginx:alpine",
+  "use_database": ["yes", "no"],
+  "database": ["mongo", "postgres", "mysql"],
+  "use_reverse_proxy": ["yes", "no"]
+}
