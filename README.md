@@ -1,4 +1,4 @@
-Cookiecutter Docker Cluster
+## Cookiecutter Docker Cluster
 
 A Cookiecutter template for generating a Docker Compose cluster with:
 
