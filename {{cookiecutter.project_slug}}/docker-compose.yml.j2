@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  backend:
+    image: {{ cookiecutter.backend_image }}
+    restart: always
+
+  frontend:
+    image: {{ cookiecutter.frontend_image }}
+    restart: always
+
+{% if cookiecutter.use_database == "yes" %}
+  {% if cookiecutter.database == "mongo" %}
+  mongo:
+    image: mongo:6
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+  {% elif cookiecutter.database == "postgres" %}
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: mydb
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  {% elif cookiecutter.database == "mysql" %}
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+  {% endif %}
+{% endif %}
+
+{% if cookiecutter.use_reverse_proxy == "yes" %}
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+{% endif %}
+
+volumes:
+{% if cookiecutter.use_database == "yes" %}
+  {% if cookiecutter.database == "mongo" %}
+  mongo_data:
+  {% elif cookiecutter.database == "postgres" %}
+  pg_data:
+  {% elif cookiecutter.database == "mysql" %}
+  mysql_data:
+  {% endif %}
+{% endif %}
