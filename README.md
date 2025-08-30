@@ -26,7 +26,7 @@ pip install cookiecutter
 
 ### 2. Generate a Project
 ```bash
-cookiecutter gh:YOUR_USERNAME/cookiecutter-docker-cluster
+cookiecutter gh:YOUR_USERNAME/cookiecutter-docker
 ```
 ### 3.Answer the Questions
 ```bash
