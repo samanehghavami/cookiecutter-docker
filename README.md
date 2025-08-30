@@ -37,3 +37,17 @@ use_database [yes/no]: yes
 database [mongo/postgres/mysql]: postgres
 use_reverse_proxy [yes/no]: yes
 ```
+### 4.Navigate into the Project
+```bash
+cd my_app
+```
+### 5.Run with docker compose
+```bash
+docker compose up -d
+```
+## Requirements
+Docker & Docker Compose
+
+Python 3.7+
+
+Cookiecutter
